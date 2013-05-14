@@ -1,0 +1,4 @@
+{ "bitcoind": {
+     "uri": "http://user:pass@localhost:8332"
+  }
+}
