@@ -1,0 +1,26 @@
+{
+  "name": "cointaner",
+  "version": "0.1.0",
+  "author": "Don Park <donp@donp.org>",
+  "license": "BSD",
+  "main": "./index.js",
+  "description": "Simple access to the Mt.Gox bitcoin orderbook.",
+  "dependencies": {},
+  "devDependencies": {
+    "vows": ">=0.7.0",
+    "nodemock": "0.2.x"
+  },
+  "scripts": {
+    "test": "vows --isolate --spec test/*.js"
+  },
+  "readmeFilename": "README.md",
+  "directories": {
+    "test": "test"
+  },
+  "keywords": [
+    "bitcoin"
+  ],
+  "engines": {
+    "node": ">=0.8"
+  }
+}
