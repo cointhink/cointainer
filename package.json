@@ -7,7 +7,8 @@
   "description": "Simple access to the Mt.Gox bitcoin orderbook.",
   "dependencies": {
     "apiserver":"0.2.x",
-    "request":"2.x.x"
+    "request":"2.x.x",
+    "sqlite3":"2.x.x"
     },
   "devDependencies": {
     "vows": ">=0.7.0",
