@@ -5,7 +5,10 @@
   "license": "BSD",
   "main": "./index.js",
   "description": "Simple access to the Mt.Gox bitcoin orderbook.",
-  "dependencies": {},
+  "dependencies": {
+    "apiserver":"0.2.x",
+    "request":"2.x.x"
+    },
   "devDependencies": {
     "vows": ">=0.7.0",
     "nodemock": "0.2.x"
