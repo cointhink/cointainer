@@ -14,11 +14,11 @@ btcd.setup(config.bitcoind.uri)
 // connect to the database
 db.setup(sqlite3, 'db/transactions.db')
 
-console.log("Begin sync every "+config.sync_rate/1000+" sec.")
+console.log("Begin sync every "+config.sync_rate+" sec.")
 block_report()
 
 // startup synchronization
-timers.setInterval(sync, config.sync_rate)
+timers.setInterval(sync, config.sync_rate*1000)
 
 function sync(){
   db.load_block_hash(function(block_hash){
