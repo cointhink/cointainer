@@ -7,10 +7,11 @@ var db = require('./lib/db')
 var btcd = require('./lib/bitcoind')
 var config = JSON.parse(fs.readFileSync('config.json'))
 
+// set bitcoid location
+btcd.setup(config.bitcoind.uri)
+
 // connect to the database
 db.setup(sqlite3, 'db/transactions.db')
-// connect to bitcoind
-btcd.setup(config.bitcoind.uri)
 
 // startup synchronization
 db.load_block_height(function(block_height){
