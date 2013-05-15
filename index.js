@@ -1,4 +1,5 @@
-var fs = require('fs')
+var fs = require('fs'),
+    timers = require('timers')
 
 var ApiServer = require('apiserver')
 var sqlite3 = require('sqlite3').verbose();
@@ -13,14 +14,23 @@ btcd.setup(config.bitcoind.uri)
 // connect to the database
 db.setup(sqlite3, 'db/transactions.db')
 
+console.log("Begin sync every "+config.sync_rate/1000+" sec.")
+
 // startup synchronization
-db.load_block_hash(function(block_hash){
-  btcd.unprocessed_transactions_since(block_hash, function(bitcoin){
-    db.transaction(function(){
-      bitcoin.transactions.forEach(function(tx){
-        db.add_bitcoin_tx(tx)
+timers.setInterval(sync, config.sync_rate)
+
+function sync(){
+  var lastblock
+  db.load_block_hash(function(block_hash){
+    btcd.unprocessed_transactions_since(block_hash, function(bitcoin){
+      db.transaction(function(){
+        bitcoin.transactions.forEach(function(tx){
+          db.add_bitcoin_tx(tx)
+        })
+        lastblick = bitcoin.lastblock
+        db.save_block_hash(lastblock)
       })
-      db.save_block_hash(bitcoin.lastblock)
     })
   })
-})
+  console.log('synced up to '+lastblock)
+}

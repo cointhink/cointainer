@@ -1,4 +1,5 @@
 { "bitcoind": {
      "uri": "http://user:pass@localhost:8332"
-  }
+  },
+  "sync_rate":15000
 }
