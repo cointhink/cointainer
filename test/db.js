@@ -23,29 +23,29 @@ vows.describe('db').addBatch({
       assert(db.connected)
     }
   },
-  'missing load_block_height': {
+  'missing load_block_hash': {
     topic: function(){
-      db.load_block_height(this.callback)
+      db.load_block_hash(this.callback)
     },
-    'no height': function(height){
-      assert.isUndefined(height)
+    'no hash': function(hash){
+      assert.isUndefined(hash)
     }
   },
-  'existing load_block_height': {
+  'existing load_block_hash': {
     topic: function(){
-      db.save_block_height(1, function(){
-        db.load_block_height(this.callback)
+      db.save_block_hash(1, function(){
+        db.load_block_hash(this.callback)
       })
     },
-    'existing height': function(height){
-      assert.equal(height, 1)
+    'existing hash': function(hash){
+      assert.equal(hash, 1)
     }
   },
-  'save_block_height': {
+  'save_block_hash': {
     topic: function(){
-      db.save_block_height(1, this.callback)
+      db.save_block_hash(1, this.callback)
     },
-    'saved': function(height){
+    'saved': function(hash){
       assert(true)
     },
   }
