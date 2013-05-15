@@ -33,7 +33,7 @@ vows.describe('db').addBatch({
   },
   'existing load_block_hash': {
     topic: function(){
-      db.save_block_hash(1, function(){
+      db.save_block_hash("00abc", function(){
         db.load_block_hash(this.callback)
       })
     },
@@ -43,7 +43,7 @@ vows.describe('db').addBatch({
   },
   'save_block_hash': {
     topic: function(){
-      db.save_block_hash(1, this.callback)
+      db.save_block_hash("00abc", this.callback)
     },
     'saved': function(hash){
       assert(true)
