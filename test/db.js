@@ -34,12 +34,19 @@ vows.describe('db').addBatch({
   'existing load_block_height': {
     topic: function(){
       db.save_block_height(1, function(){
-        console.log("saveback!")
         db.load_block_height(this.callback)
       })
     },
     'existing height': function(height){
       assert.equal(height, 1)
+    }
+  },
+  'save_block_height': {
+    topic: function(){
+      db.save_block_height(1, this.callback)
+    },
+    'saved': function(height){
+      assert(true)
     },
   }
 
