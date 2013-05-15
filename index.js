@@ -13,10 +13,6 @@ db.setup(sqlite3)
 btcd.setup(config.bitcoind.uri)
 
 // startup synchronization
-db.sync(btcd, function(err, count){
-	if(err) {
-		console.log('err  '+err)
-	} else {
-		console.log('block count '+JSON.stringify(count.body))
-	}
+db.sync(btcd, function(count){
+  console.log('block count '+count)
 })

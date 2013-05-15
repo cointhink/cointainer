@@ -1,25 +1,16 @@
-var EventEmitter = require('events').EventEmitter;
 var vows = require('vows'),
     assert = require('assert'),
-    nodemock = require('nodemock');
+    nodemock = require('nodemock'),
+    sqlite3 = require('sqlite3');
 
-var cointainer = require('../index.js')
+var db = require('../lib/db.js')
 
-var mockio = new EventEmitter()
-
-vows.describe('cointainer').addBatch({
-  'connect to bitcoind': {
-    topic: function(){
-      var that = this
-      cointainer.on('connect', function(payload){
-        // vowjs insists on first param error
-        that.callback(null, payload)
-      })
-      cointainer.attach(mockio, 'usd')
-      mockio.emit('connect')
-    },
-    'connection succeeds': function () {
-      assert.isTrue(false);
-    },
+vows.describe('db').addBatch({
+  'sqlite3': {
+    topic: db,
+    'setup': function(db){
+      db.setup(sqlite3)
+      assert(db.connected)
+    }
   }
 }).export(module)
