@@ -15,8 +15,8 @@ btcd.setup(config.bitcoind.uri)
 // startup synchronization
 db.load_block_height(function(block_height){
   btcd.unprocessed_transactions_since(block_height, function(transactions){
-    transactions.each(function(transaction){
-      db.save_transaction(transaction)
+    transactions.forEach(function(transaction){
+      db.add_transaction(transaction)
     })
   })
 })
