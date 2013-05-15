@@ -14,10 +14,13 @@ btcd.setup(config.bitcoind.uri)
 db.setup(sqlite3, 'db/transactions.db')
 
 // startup synchronization
-db.load_block_height(function(block_height){
-  btcd.unprocessed_transactions_since(block_height, function(transactions){
-    transactions.forEach(function(transaction){
-      db.add_transaction(transaction)
+db.load_block_hash(function(block_hash){
+  btcd.unprocessed_transactions_since(block_hash, function(result){
+    db.transaction(function(){
+      result.transactions.forEach(function(tx){
+        db.add_bitcoin_tx(tx)
+      })
+      db.save_block_hash(result.lastblock)
     })
   })
 })
