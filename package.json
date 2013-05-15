@@ -8,8 +8,7 @@
   "dependencies": {
     "apiserver":"0.2.x",
     "request":"2.x.x",
-    "sqlite3":"2.x.x",
-    "seq":"0.3.x"
+    "sqlite3":"2.x.x"
     },
   "devDependencies": {
     "vows": ">=0.7.0",
