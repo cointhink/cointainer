@@ -15,12 +15,12 @@ db.setup(sqlite3, 'db/transactions.db')
 
 // startup synchronization
 db.load_block_hash(function(block_hash){
-  btcd.unprocessed_transactions_since(block_hash, function(result){
+  btcd.unprocessed_transactions_since(block_hash, function(bitcoin){
     db.transaction(function(){
-      result.transactions.forEach(function(tx){
+      bitcoin.transactions.forEach(function(tx){
         db.add_bitcoin_tx(tx)
       })
-      db.save_block_hash(result.lastblock)
+      db.save_block_hash(bitcoin.lastblock)
     })
   })
 })
