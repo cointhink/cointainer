@@ -37,7 +37,6 @@ function sync(){
       })
     })
   })
-  block_report()
 }
 
 function block_report(block_hash){
