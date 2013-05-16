@@ -18,12 +18,12 @@ var config = JSON.parse(fs.readFileSync('config.json'))
 btcd.setup(config.bitcoind.uri)
 
 // setup the database
-db.setup(sqlite3, 'db/transactions.db')
+db.setup(sqlite3, config.db.file)
 
 // setup the manager
 cointainer.setup(db, btcd)
 
-console.log("Begin sync every "+config.sync_rate+" sec.")
+console.log("Sync bitcoind <=> "+config.db.file+" every "+config.sync_rate+" sec.")
 db.load_block_hash(function(block_hash){
   if(block_hash){
     cointainer.block_report(block_hash)
