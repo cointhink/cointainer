@@ -21,8 +21,11 @@ btcd.setup(config.bitcoind)
 // setup the database
 db.setup(sqlite3, config.db.file)
 
+// setup the API
+var rpc_server = jayson.server(rpc)
+
 // setup the manager
-cointainer.setup(db, btcd)
+cointainer.setup(db, btcd, rpc_server)
 
 console.log("Sync bitcoind <=> "+config.db.file+" every "+config.sync_rate+" sec.")
 
@@ -32,5 +35,4 @@ cointainer.sync()
 // timer sync
 timers.setInterval(cointainer.sync, config.sync_rate*1000)
 
-// API
-jayson.server(rpc).http().listen(config.api.port)
+cointainer.listen(config.api.port)
