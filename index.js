@@ -15,7 +15,11 @@ btcd.setup(config.bitcoind.uri)
 db.setup(sqlite3, 'db/transactions.db')
 
 console.log("Begin sync every "+config.sync_rate+" sec.")
-block_report()
+db.load_block_hash(function(block_hash){
+  if(block_hash){
+    block_report(block_hash)
+  }
+})
 
 // startup synchronization
 timers.setInterval(sync, config.sync_rate*1000)
@@ -29,21 +33,15 @@ function sync(){
         })
         lastblock = bitcoin.lastblock
         db.save_block_hash(lastblock)
-        console.log('synced up to '+lastblock)
+        block_report(lastblock)
       })
     })
   })
   block_report()
 }
 
-function block_report(){
-  db.load_block_hash(function(block_hash){
-    if(block_hash){
-      btcd.block(block_hash, function(block){
-        console.log("Synced up to block #"+block.height+" "+(new Date(block.time*1000)))
-      })
-    } else {
-      console.log('first sync')
-    }
+function block_report(block_hash){
+   btcd.block(block_hash, function(block){
+    console.log("Synced up to block #"+block.height+" "+(new Date(block.time*1000)))
   })
 }
