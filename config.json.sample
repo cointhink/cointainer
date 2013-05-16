@@ -1,5 +1,12 @@
-{ "bitcoind": {
-     "uri": "http://user:pass@localhost:8332"
+{ "db": { "file": "db/transactions.db"},
+  "bitcoind": {
+    "host": "localhost",
+    "port": 8332,
+    "user": "btcuser",
+    "pass": "btcpassword"
   },
-  "sync_rate":120
+  "sync_rate":120,
+  "api": {
+    "port": 8080
+  }
 }

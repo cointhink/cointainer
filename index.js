@@ -15,7 +15,7 @@ var db         = require('./lib/db'),
 var config = JSON.parse(fs.readFileSync('config.json'))
 
 // setup bitcoind
-btcd.setup(config.bitcoind.uri)
+btcd.setup(config.bitcoind)
 
 // setup the database
 db.setup(sqlite3, config.db.file)
@@ -24,13 +24,11 @@ db.setup(sqlite3, config.db.file)
 cointainer.setup(db, btcd)
 
 console.log("Sync bitcoind <=> "+config.db.file+" every "+config.sync_rate+" sec.")
-db.load_block_hash(function(block_hash){
-  if(block_hash){
-    cointainer.block_report(block_hash)
-  }
-})
 
-// start synchronization
+// first sync
+cointainer.sync()
+
+// timer sync
 timers.setInterval(cointainer.sync, config.sync_rate*1000)
 
 // API
