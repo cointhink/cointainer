@@ -25,7 +25,9 @@ vows.describe('db').addBatch({
   },
   'missing load_block_hash': {
     topic: function(){
-      db.load_block_hash(this.callback)
+      db.save_block_hash(null, function(){
+        db.load_block_hash(this.callback)
+      })
     },
     'no hash': function(hash){
       assert.isUndefined(hash)
