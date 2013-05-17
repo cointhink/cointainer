@@ -4,7 +4,8 @@ var fs     = require('fs'),
 
 // npm libs
 var jayson  = require('jayson'),
-    sqlite3 = require('sqlite3').verbose();
+    sqlite3 = require('sqlite3').verbose(),
+    request = require('request')
 
 // local libs
 var db         = require('./lib/db'),
@@ -16,7 +17,7 @@ var db         = require('./lib/db'),
 var config = JSON.parse(fs.readFileSync('config.json'))
 
 // setup bitcoind
-btcd.setup(config.bitcoind)
+btcd.setup(config.bitcoind, request)
 
 // setup the database
 db.setup(sqlite3, config.db.file)
