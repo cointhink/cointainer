@@ -22,7 +22,7 @@ btcd.setup(config.bitcoind)
 db.setup(sqlite3, config.db.file)
 
 // setup the manager
-cointainer.setup(db, btcd)
+cointainer.setup(db, btcd, config.tenant)
 
 console.log("Sync bitcoind <=> "+config.db.file+" every "+config.sync_rate+" sec.")
 
