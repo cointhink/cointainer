@@ -30,7 +30,7 @@ console.log("Sync bitcoind <=> "+config.db.file+" every "+config.sync_rate+" sec
 cointainer.sync()
 
 // timer sync
-timers.setInterval(cointainer.sync, config.sync_rate*1000)
+timers.setInterval(cointainer.sync_mutex, config.sync_rate*1000)
 
 // API
 jayson.server(new rpc(cointainer)).http().listen(config.api.port)
