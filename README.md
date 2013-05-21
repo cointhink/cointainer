@@ -3,12 +3,28 @@ cointainer
 
 A wrapper to bitcoind to provide caching, access control, key management, and other features.
 
+### Setup
+Edit the values in config.json to specify the port to listen to for API requests,
+the host and port for bitcoind, and other important values.
 
 ### API
 
 
 #### Balance
-  `balance(account_name)`
+Retrieve the current valid coin balance for the given username.
+
+`balance(account_name)`
+
+```
+{
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "balance",
+    "params": [
+        "bob"
+    ]
+}
+```
 
 ```
 {
@@ -26,7 +42,10 @@ A wrapper to bitcoind to provide caching, access control, key management, and ot
 ```
 
 #### AddUser
-  `add_user(username)`
+Create an account for username. This is a prerequisite to receive coins.
+The bitcoin receiving address for this user is returned.
+
+`add_user(username)`
 
 ```
 {
@@ -40,8 +59,10 @@ A wrapper to bitcoind to provide caching, access control, key management, and ot
 }
 ```
 
-### Internals
+### History
 
 The project began when json-rpc response times from bitcoind were often 500ms. A project required quick balances and transaction history to build html pages of account information.
+
+### Internals
 
 There are three blocks in the system, this nodejs server, bitcoind, and a database.
