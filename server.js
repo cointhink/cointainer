@@ -28,6 +28,7 @@ cointainer.setup(db, btcd, config.tenant)
 console.log("Sync bitcoind <=> "+config.db.file+" every "+config.sync_rate+" sec.")
 
 // first sync
+cointainer.account_sync()
 cointainer.sync()
 
 // timer sync
