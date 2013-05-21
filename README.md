@@ -1,11 +1,16 @@
 cointainer
 ==========
 
-A wrapper to bitcoind to provide caching, access control, key management, and other features.
+A wrapper to bitcoind to provide caching, access control, key management, and other features. Its intended use is an internal service to a web application that manages bitcoin balances for users.
 
 ### Setup
+
 Edit the values in config.json to specify the port to listen to for API requests,
 the host and port for bitcoind, and other important values.
+
+```
+$ npm start
+```
 
 ### API
 
