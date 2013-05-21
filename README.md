@@ -8,11 +8,37 @@ A wrapper to bitcoind to provide caching, access control, key management, and ot
 
 
 #### Balance
-  balance(account_name)
+  `balance(account_name)`
 
-#### ReceivingAddress
-  receiving_address(account_name)
+```
+{
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": {
+        "now": 1369153449779,
+        "username": "bob",
+        "balance": {
+            "amount": 3,
+            "currency": "btc"
+        }
+    }
+}
+```
 
+#### AddUser
+  `add_user(username)`
+
+```
+{
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": {
+        "now": 1369153371028,
+        "username": "bob",
+        "receiving_addresss": "1Q3gZkgrcr9AELaZ2mUTCeh66fH9iH5uSK"
+    }
+}
+```
 
 ### Internals
 
