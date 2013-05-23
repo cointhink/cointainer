@@ -26,10 +26,10 @@ db.setup(sqlite3, config.db.file)
 cointainer.setup(db, btcd, config.tenant)
 
 // Account/user sync
-console.log('bitcoind account <=> sqlite3 account/username sync')
+console.log('Account <=> Username sync')
 cointainer.account_sync()
 
-console.log("Sync bitcoind <=> "+config.db.file+" every "+config.sync_rate+" sec.")
+console.log("Sync bitcoin transactions <=> "+config.db.file+" every "+config.sync_rate+" sec.")
 // first sync
 cointainer.sync_mutex()
 
