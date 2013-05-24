@@ -37,4 +37,4 @@ cointainer.sync_mutex()
 timers.setInterval(cointainer.sync_mutex, config.sync_rate*1000)
 
 // API
-jayson.server(new rpc(cointainer)).http().listen(config.api.port)
+jayson.server(new rpc(cointainer, db)).http().listen(config.api.port)
