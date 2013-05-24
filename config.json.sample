@@ -8,5 +8,8 @@
   "sync_rate":120,
   "api": {
     "port": 8080
+  },
+  "tenant": {
+    "name":"cointhink"
   }
 }
