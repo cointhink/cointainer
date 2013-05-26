@@ -3,7 +3,8 @@
     "host": "localhost",
     "port": 8332,
     "user": "btcuser",
-    "pass": "btcpassword"
+    "pass": "btcpassword",
+    "currency": "btc"
   },
   "sync_rate":120,
   "api": {

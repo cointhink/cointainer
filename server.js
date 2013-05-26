@@ -23,7 +23,7 @@ btcd.setup(config.bitcoind, request)
 db.setup(sqlite3, config.db.file)
 
 // setup the manager
-cointainer.setup(db, btcd, config.tenant)
+cointainer.setup(db, btcd, config)
 
 // Account/user sync
 console.log('Account <=> Username sync')
