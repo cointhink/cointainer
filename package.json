@@ -1,15 +1,15 @@
 {
   "name": "cointaner",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "author": "Don Park <donp@donp.org>",
   "license": "BSD",
   "main": "./index.js",
   "description": "Caching, username-account translation, and access control for bitcoind.",
   "dependencies": {
-    "jayson":"1.0.x",
-    "request":"2.x.x",
-    "sqlite3":"2.x.x"
-    },
+    "jayson": "1.0.x",
+    "request": "2.x.x",
+    "sqlite3": "2.x.x"
+  },
   "devDependencies": {
     "vows": ">=0.7.0",
     "nodemock": "0.2.x"
