@@ -3,8 +3,8 @@
   "version": "0.2.0",
   "author": "Don Park <donp@donp.org>",
   "license": "BSD",
-  "main": "./index.js",
-  "description": "Caching, username-account translation, and access control for bitcoind.",
+  "main": "./cointainer.js",
+  "description": "A JSON API for caching, wallet account management, and access control for bitcoind.",
   "dependencies": {
     "jayson": "1.0.x",
     "request": "2.x.x",
